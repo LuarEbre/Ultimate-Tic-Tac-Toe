@@ -162,8 +162,6 @@ public class Controller {
         for (int i = 0; i < flatButtons.size(); i++) {
             Button button = flatButtons.get(i);
 
-            System.out.println("Current Style: " + button.getStyle());
-
             if(button.getStyle().equals(style)) {
                 continue;
             }
