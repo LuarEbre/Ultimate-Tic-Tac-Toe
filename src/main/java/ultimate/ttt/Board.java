@@ -173,9 +173,9 @@ public class Board {
 
         String style;
         if (this.state == BoardState.CLAIMED_BLUE) {
-            style = "-fx-background-color: #007aff;";
+            style = "-fx-background-color: #007aff";
         } else {
-            style = "-fx-background-color: #fc3c2f;";
+            style = "-fx-background-color: #fc3c2f";
         }
 
         Timeline timeline = new Timeline();
@@ -183,13 +183,17 @@ public class Board {
 
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 3; column++) {
-                final int r = row;
-                final int c = column;
 
+                Button button = board[row][column];
+
+                if(button.getStyle().equals(style)) {
+                    System.out.println("                                                                 Skipped one!");
+                    continue;
+                }
                 // Schedule each button to change after a specific delay
                 KeyFrame frame = new KeyFrame(
                         Duration.millis(delayCounter * 75),
-                        event -> board[r][c].setStyle(style)
+                        event -> button.setStyle(style)
                 );
 
                 timeline.getKeyFrames().add(frame);

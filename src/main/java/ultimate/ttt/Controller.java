@@ -119,11 +119,11 @@ public class Controller {
 
         String style;
         if (winner == Players.BLUE) {
-            style = "-fx-background-color: #007aff;";
+            style = "-fx-background-color: #007aff";
             bluesturn.setText("Blue wins!");
             bluesturn.setVisible(true);
         } else {
-            style = "-fx-background-color: #fc3c2f;";
+            style = "-fx-background-color: #fc3c2f";
             redsturn.setText("Red wins!");
             redsturn.setVisible(true);
         }
@@ -140,7 +140,7 @@ public class Controller {
         redsturn.setVisible(false);
         drawtext.setVisible(true);
 
-        animateBoardFill("-fx-background-color: #8e8e93;");
+        animateBoardFill("-fx-background-color: #8e8e93");
     }
 
     /**
@@ -158,15 +158,24 @@ public class Controller {
         // create Timeline
         Timeline timeline = new Timeline();
 
+        int delayCounter = 0;
         for (int i = 0; i < flatButtons.size(); i++) {
-            Button btn = flatButtons.get(i);
-            
+            Button button = flatButtons.get(i);
+
+            System.out.println("Current Style: " + button.getStyle());
+
+            if(button.getStyle().equals(style)) {
+                System.out.println("                                                                 Skipped one!");
+                continue;
+            }
+
             KeyFrame frame = new KeyFrame(
-                    Duration.millis(i * 75),
-                    event -> btn.setStyle(style)
+                    Duration.millis(delayCounter * 75),
+                    event -> button.setStyle(style)
             );
 
             timeline.getKeyFrames().add(frame);
+            delayCounter++;
         }
         timeline.play();
     }
