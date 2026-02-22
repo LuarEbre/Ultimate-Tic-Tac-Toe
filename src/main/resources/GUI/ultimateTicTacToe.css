@@ -1,0 +1,40 @@
+.root, .backgroundPane {
+    -fx-background-color: #f1f1f1;
+    -fx-background-radius: 15;
+
+    -fx-border-radius: 10;
+    -fx-border-width: 4px;
+    -fx-border-color: #0d0d0d;
+}
+
+.button {
+    -fx-background-color: #bcbcc0;
+    -fx-background-radius: 0;
+
+    -fx-text-fill: transparent;
+}
+
+.button:disabled {
+    -fx-background-color: #8e8e93;
+    -fx-opacity: 1.0;
+}
+
+.button:hover {
+    -fx-background-color: #cdcdd1;
+}
+
+.top-left {
+    -fx-background-radius: 10 0 0 0;
+}
+
+.top-right {
+    -fx-background-radius: 0 10 0 0;
+}
+
+.bottom-right {
+    -fx-background-radius: 0 0 10 0;
+}
+
+.bottom-left {
+    -fx-background-radius: 0 0 0 10;
+}
