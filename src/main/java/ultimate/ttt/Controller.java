@@ -165,7 +165,6 @@ public class Controller {
             System.out.println("Current Style: " + button.getStyle());
 
             if(button.getStyle().equals(style)) {
-                System.out.println("                                                                 Skipped one!");
                 continue;
             }
 

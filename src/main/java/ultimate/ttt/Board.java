@@ -187,7 +187,6 @@ public class Board {
                 Button button = board[row][column];
 
                 if(button.getStyle().equals(style)) {
-                    System.out.println("                                                                 Skipped one!");
                     continue;
                 }
                 // Schedule each button to change after a specific delay
