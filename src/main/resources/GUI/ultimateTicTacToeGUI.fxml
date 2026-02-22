@@ -55,7 +55,7 @@
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Text fx:id="titletext" strokeWidth="0.0" text="Ultimate Tic Tac Toe" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="15.0">
+                              <Text fx:id="titletext" strokeType="OUTSIDE" strokeWidth="0.0" text="Ultimate Tic Tac Toe" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="15.0">
                                  <font>
                                     <Font name="Segoe UI Semilight" size="40.0" />
                                  </font>
@@ -64,12 +64,17 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Text fx:id="redsturn" fill="#fc3c2f" strokeType="OUTSIDE" strokeWidth="0.0" text="Red's Turn" AnchorPane.leftAnchor="308.0" AnchorPane.topAnchor="15.0">
+                              <Text fx:id="redsturn" fill="#fc3c2f" strokeType="OUTSIDE" strokeWidth="0.0" text="Red's Turn" visible="false" AnchorPane.leftAnchor="316.0" AnchorPane.topAnchor="15.0">
                                  <font>
                                     <Font name="Segoe UI Semibold" size="35.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="bluesturn" fill="#007aff" strokeType="OUTSIDE" strokeWidth="0.0" text="Blue's Turn" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="15.0">
+                              <Text fx:id="bluesturn" fill="#007aff" strokeType="OUTSIDE" strokeWidth="0.0" text="Blue's Turn" AnchorPane.leftAnchor="312.0" AnchorPane.topAnchor="15.0">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="35.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="drawtext" fill="#8e8e93" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Draw!" visible="false" AnchorPane.leftAnchor="353.0" AnchorPane.topAnchor="15.0">
                                  <font>
                                     <Font name="Segoe UI Semibold" size="35.0" />
                                  </font>

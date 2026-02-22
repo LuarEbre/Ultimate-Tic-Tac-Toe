@@ -29,6 +29,10 @@ public class Controller {
     @FXML
     public void initialize() {
 
+        bluesturn.setVisible(true);
+        redsturn.setVisible(false);
+        drawtext.setVisible(false);
+
         // initialize all 81 buttons into 4D array
         allButtons = new Button[3][3][3][3];
 
