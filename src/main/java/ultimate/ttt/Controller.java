@@ -40,6 +40,8 @@ public class Controller {
     @FXML
     private Text titletext, bluesturn, redsturn, drawtext;
 
+    private Players startingPlayer;
+
     private UltimateBoard gameBoard;
 
     @FXML
@@ -97,7 +99,8 @@ public class Controller {
             }
         }
         // initialize gameBoard with 4D array and starting player
-        gameBoard = new UltimateBoard(allButtons, Players.BLUE);
+        this.startingPlayer = Players.BLUE;
+        gameBoard = new UltimateBoard(allButtons, startingPlayer);
     }
 
     /**
@@ -214,13 +217,24 @@ public class Controller {
     protected void restart(MouseEvent event) {
 
         if(restartIcon.getOpacity()>0.5) {
-            this.gameBoard = new UltimateBoard(allButtons, Players.BLUE);
 
             this.drawtext.setVisible(false);
             this.redsturn.setVisible(false);
+            this.bluesturn.setVisible(false);
             this.redsturn.setText("Red's turn!");
             this.bluesturn.setText("Blue's turn!");
-            this.bluesturn.setVisible(true);
+            if(startingPlayer==Players.BLUE) {
+                startingPlayer = Players.RED;
+                redsturn.setVisible(true);
+            } else {
+                startingPlayer = Players.BLUE;
+                bluesturn.setVisible(true);
+            }
+
+            this.gameBoard = new UltimateBoard(allButtons, startingPlayer);
+
+
+
 
             List<Button> buttons = Arrays.stream(allButtons)
                     .flatMap(Arrays::stream)
