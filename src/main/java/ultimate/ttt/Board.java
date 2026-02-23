@@ -11,7 +11,7 @@ public class Board {
     private BoardState state;
 
     /**
-     * Constructor sets new board's state to {@link BoardState#UNCLAIMED} and all contained buttons' state to {@link ButtonState#EMPTY_ACTIVE}
+     * Constructor sets new board's state to {@link BoardState#UNCLAIMED} and all contained buttons' state to {@link ButtonState#EMPTY}
      * @param board 2D array of {@link Button}
      */
     Board(Button[][] board) {
@@ -20,7 +20,7 @@ public class Board {
 
         for(int row=0; row<3; row++) {
             for(int col=0; col<3; col++) {
-                buttonStates[row][col] = ButtonState.EMPTY_ACTIVE;
+                buttonStates[row][col] = ButtonState.EMPTY;
             }
         }
     }
@@ -106,7 +106,7 @@ public class Board {
         boolean isFull = true;
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < 3; c++) {
-                if (buttonStates[r][c] == ButtonState.EMPTY_ACTIVE || buttonStates[r][c] == ButtonState.EMPTY_INACTIVE) {
+                if (buttonStates[r][c] == ButtonState.EMPTY) {
                     isFull = false;
                     break;
                 }
@@ -211,7 +211,7 @@ public class Board {
     public boolean isFull() {
         for(int row = 0; row < 3; row++) {
             for(int column = 0; column < 3; column++) {
-                if(buttonStates[row][column] == ButtonState.EMPTY_INACTIVE || buttonStates[row][column] == ButtonState.EMPTY_ACTIVE) {
+                if(buttonStates[row][column] == ButtonState.EMPTY) {
                     return false;
                 }
             }

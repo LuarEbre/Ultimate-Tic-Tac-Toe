@@ -1,11 +1,14 @@
 package ultimate.ttt;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -19,6 +22,9 @@ public class Controller {
     private GridPane masterGrid;
 
     @FXML
+    private ImageView restartIcon;
+
+    @FXML
     private Button[][][][] allButtons;
 
     @FXML
@@ -28,6 +34,9 @@ public class Controller {
 
     @FXML
     public void initialize() {
+
+        restartIcon.setOpacity(0.0);
+        restartIcon.setDisable(true);
 
         bluesturn.setVisible(true);
         redsturn.setVisible(false);
@@ -96,11 +105,11 @@ public class Controller {
 
         Players winner = gameBoard.buttonPress(globalRow, globalCol, localRow, localCol);
 
-        if(winner == Players.NONE) {
+        if (winner == Players.NONE) {
             // only need to switch players if there is no winner
             switchPlayers();
             // only check for draw if no there is no winner
-            if(gameBoard.checkForDraw()) this.draw();
+            if (gameBoard.checkForDraw()) this.draw();
         }
         // a winner is guaranteed
         else crown(winner);
@@ -127,7 +136,7 @@ public class Controller {
             redsturn.setText("Red wins!");
             redsturn.setVisible(true);
         }
-        
+
         animateBoardFill(style);
     }
 
@@ -162,19 +171,64 @@ public class Controller {
         for (int i = 0; i < flatButtons.size(); i++) {
             Button button = flatButtons.get(i);
 
-            if(button.getStyle().equals(style)) {
+            if (button.getStyle().equals(style)) {
                 continue;
             }
 
             KeyFrame frame = new KeyFrame(
-                    Duration.millis(delayCounter * 75),
+                    Duration.millis(delayCounter * 35),
                     event -> button.setStyle(style)
             );
 
             timeline.getKeyFrames().add(frame);
             delayCounter++;
         }
+
+        timeline.setOnFinished(event -> {
+            opacityTransition(restartIcon, 650, true);
+        });
+
         timeline.play();
+    }
+
+    @FXML
+    private void restart(MouseEvent event) {
+
+        this.gameBoard = new UltimateBoard(allButtons, Players.BLUE);
+
+        this.drawtext.setVisible(false);
+        this.redsturn.setVisible(false);
+        this.redsturn.setText("Red's turn!");
+        this.bluesturn.setText("Blue's turn!");
+        this.bluesturn.setVisible(true);
+
+        List<Button> buttons = Arrays.stream(allButtons)
+                .flatMap(Arrays::stream)
+                .flatMap(Arrays::stream)
+                .flatMap(Arrays::stream)
+                .toList();
+        for (Button button : buttons) {
+            button.setStyle("");
+            button.setDisable(false);
+        }
+
+        this.opacityTransition((Node) event.getSource(), 250, false);
+    }
+
+    private void opacityTransition(Node node, int durationMS, boolean in) {
+
+        if(in) node.setDisable(false);
+
+        FadeTransition fade = new FadeTransition(Duration.millis(durationMS), node);
+
+        fade.setFromValue(in ? 0.0 : 1.0);
+        fade.setToValue(in ? 1.0 : 0.0);
+
+        if(!in) {
+            fade.setOnFinished(event -> node.setDisable(true));
+        }
+
+        fade.play();
     }
 
     /**
