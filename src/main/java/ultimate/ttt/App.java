@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -26,6 +27,12 @@ public class App extends Application {
         Scene scene = new Scene(root, 800, 1000);
         scene.setFill(Color.TRANSPARENT);
 
+        // 1. Load the image from your resources
+        Image appIcon = new Image(getClass().getResourceAsStream("/GUI/Images/logo.png"));
+
+        // 2. Add it to the stage's icon list
+        stage.getIcons().add(appIcon);
+
         scene.getStylesheets().add(getClass().getResource("/GUI/ultimateTicTacToe.css").toExternalForm());
 
         root.setOnMousePressed(event -> {
@@ -43,7 +50,7 @@ public class App extends Application {
                 myController.showMenu();
             }
             if (event.getCode() == KeyCode.R) {
-                myController.restart(null);
+                myController.restart();
             }
         });
 

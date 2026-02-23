@@ -214,7 +214,7 @@ public class Controller {
     }
 
     @FXML
-    protected void restart(MouseEvent event) {
+    protected void restart() {
 
         if(restartIcon.getOpacity()>0.5) {
 
