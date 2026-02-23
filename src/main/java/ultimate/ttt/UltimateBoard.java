@@ -96,20 +96,45 @@ public class UltimateBoard {
         return Players.NONE;
     }
 
+    private boolean canPlayerWinGlobal(Players player) {
+        BoardState opponentBoard = (player == Players.BLUE) ? BoardState.CLAIMED_RED : BoardState.CLAIMED_BLUE;
+
+        for (int i = 0; i < 3; i++) {
+            // Check Rows
+            if (!isBlocking(boards[i][0].getState(), opponentBoard) &&
+                    !isBlocking(boards[i][1].getState(), opponentBoard) &&
+                    !isBlocking(boards[i][2].getState(), opponentBoard)) return true;
+
+            // Check Columns
+            if (!isBlocking(boards[0][i].getState(), opponentBoard) &&
+                    !isBlocking(boards[1][i].getState(), opponentBoard) &&
+                    !isBlocking(boards[2][i].getState(), opponentBoard)) return true;
+        }
+
+        // Check Diagonals
+        if (!isBlocking(boards[0][0].getState(), opponentBoard) &&
+                !isBlocking(boards[1][1].getState(), opponentBoard) &&
+                !isBlocking(boards[2][2].getState(), opponentBoard)) return true;
+
+        if (!isBlocking(boards[0][2].getState(), opponentBoard) &&
+                !isBlocking(boards[1][1].getState(), opponentBoard) &&
+                !isBlocking(boards[2][0].getState(), opponentBoard)) return true;
+
+        return false;
+    }
+
     /**
-     * Function to help deciding whether the game is a draw <br>
-     * Brute-force checks if all tiles in the global board are filled
-     * @return false if there are unclaimed tiles <br>
-     * true if the entire board is full
+     * A local board blocks a player's path if the opponent claimed it, OR if it resulted in a draw.
+     */
+    private boolean isBlocking(BoardState state, BoardState opponentBoard) {
+        return state == opponentBoard || state == BoardState.DRAW;
+    }
+
+    /**
+     * Predicts if the entire game has entered an unwinnable state for both players.
      */
     protected boolean checkForDraw() {
-        for(int row = 0; row < 3; row++) {
-            for(int column = 0; column < 3; column++) {
-                if(!boards[row][column].isFull()) return false;
-            }
-        }
-        // if all boards are full, return true
-        return true;
+        return !canPlayerWinGlobal(Players.BLUE) && !canPlayerWinGlobal(Players.RED);
     }
 
     /**

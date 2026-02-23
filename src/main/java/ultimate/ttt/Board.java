@@ -102,23 +102,33 @@ public class Board {
             return Players.BLUE;
         }
 
-        // Check for Draw
-        boolean isFull = true;
-        for (int r = 0; r < 3; r++) {
-            for (int c = 0; c < 3; c++) {
-                if (buttonStates[r][c] == ButtonState.EMPTY) {
-                    isFull = false;
-                    break;
-                }
-            }
-        }
-
-        if (isFull) {
+        // If neither Blue nor Red have a valid path to victory, it's a dead board.
+        if (!canPlayerWinLocal(Players.BLUE) && !canPlayerWinLocal(Players.RED)) {
             this.state = BoardState.DRAW;
         }
 
-        // No winner or draw
+        // No winner (might be drawn, might be unclaimed)
         return Players.NONE;
+    }
+
+    /**
+     * Predictive check to see if a player has at least one possible path to victory.
+     * A path is valid if it contains none of the opponent's claimed tiles.
+     */
+    private boolean canPlayerWinLocal(Players player) {
+        ButtonState opponent = (player == Players.BLUE) ? ButtonState.CLAIMED_RED : ButtonState.CLAIMED_BLUE;
+
+        for (int i = 0; i < 3; i++) {
+
+            if (buttonStates[i][0] != opponent && buttonStates[i][1] != opponent && buttonStates[i][2] != opponent) return true;
+
+            if (buttonStates[0][i] != opponent && buttonStates[1][i] != opponent && buttonStates[2][i] != opponent) return true;
+        }
+
+        if (buttonStates[0][0] != opponent && buttonStates[1][1] != opponent && buttonStates[2][2] != opponent) return true;
+        if (buttonStates[0][2] != opponent && buttonStates[1][1] != opponent && buttonStates[2][0] != opponent) return true;
+
+        return false;
     }
 
     /**
