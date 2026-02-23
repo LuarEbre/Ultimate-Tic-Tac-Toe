@@ -233,9 +233,6 @@ public class Controller {
 
             this.gameBoard = new UltimateBoard(allButtons, startingPlayer);
 
-
-
-
             List<Button> buttons = Arrays.stream(allButtons)
                     .flatMap(Arrays::stream)
                     .flatMap(Arrays::stream)
