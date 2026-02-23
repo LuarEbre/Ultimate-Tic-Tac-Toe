@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -17,8 +18,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI/ultimateTicTacToeGUI.fxml"));
-        Parent root = fxmlLoader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/ultimateTicTacToeGUI.fxml"));
+        Parent root = loader.load();
 
         stage.initStyle(StageStyle.TRANSPARENT);
 
@@ -34,6 +35,16 @@ public class App extends Application {
         root.setOnMouseDragged(event -> {
             stage.setX(event.getScreenX() - xOffset);
             stage.setY(event.getScreenY() - yOffset);
+        });
+
+        Controller myController = loader.getController();
+        scene.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+                myController.showMenu();
+            }
+            if (event.getCode() == KeyCode.R) {
+                myController.restart(null);
+            }
         });
 
         stage.setScene(scene);

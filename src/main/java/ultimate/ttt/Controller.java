@@ -2,6 +2,7 @@ package ultimate.ttt;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,9 +10,12 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.shape.Rectangle;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,13 +23,19 @@ import java.util.List;
 public class Controller {
 
     @FXML
+    private AnchorPane root, menu;
+
+    @FXML
     private GridPane masterGrid;
 
     @FXML
-    private ImageView restartIcon;
+    private ImageView restartIcon, menuImage;
 
     @FXML
     private Button[][][][] allButtons;
+
+    @FXML
+    private Button playButton, instructionsButton, quitButton;
 
     @FXML
     private Text titletext, bluesturn, redsturn, drawtext;
@@ -34,6 +44,17 @@ public class Controller {
 
     @FXML
     public void initialize() {
+
+        // round the corners of main menu png
+        Rectangle clip = new Rectangle();
+
+        clip.setArcWidth(30);
+        clip.setArcHeight(30);
+
+        clip.widthProperty().bind(root.widthProperty());
+        clip.heightProperty().bind(root.heightProperty());
+
+        menuImage.setClip(clip);
 
         restartIcon.setOpacity(0.0);
         restartIcon.setDisable(true);
@@ -49,8 +70,7 @@ public class Controller {
         for (Node localGridNode : masterGrid.getChildren()) {
 
             // only operate on instances of GridPane
-            if (localGridNode instanceof GridPane) {
-                GridPane localGrid = (GridPane) localGridNode;
+            if (localGridNode instanceof GridPane localGrid) {
 
                 // convert Integer objects (can be null) to int
                 Integer gCol = GridPane.getColumnIndex(localGrid);
@@ -61,9 +81,8 @@ public class Controller {
                 // traverse each node's 9 internal nodes
                 for (Node buttonNode : localGrid.getChildren()) {
 
-                    // only operate on insances of Button
-                    if (buttonNode instanceof Button) {
-                        Button button = (Button) buttonNode;
+                    // only operate on instances of Button
+                    if (buttonNode instanceof Button button) {
 
                         // convert Integer objects (can be null) to int
                         Integer lCol = GridPane.getColumnIndex(button);
@@ -192,27 +211,29 @@ public class Controller {
     }
 
     @FXML
-    private void restart(MouseEvent event) {
+    protected void restart(MouseEvent event) {
 
-        this.gameBoard = new UltimateBoard(allButtons, Players.BLUE);
+        if(restartIcon.getOpacity()>0.5) {
+            this.gameBoard = new UltimateBoard(allButtons, Players.BLUE);
 
-        this.drawtext.setVisible(false);
-        this.redsturn.setVisible(false);
-        this.redsturn.setText("Red's turn!");
-        this.bluesturn.setText("Blue's turn!");
-        this.bluesturn.setVisible(true);
+            this.drawtext.setVisible(false);
+            this.redsturn.setVisible(false);
+            this.redsturn.setText("Red's turn!");
+            this.bluesturn.setText("Blue's turn!");
+            this.bluesturn.setVisible(true);
 
-        List<Button> buttons = Arrays.stream(allButtons)
-                .flatMap(Arrays::stream)
-                .flatMap(Arrays::stream)
-                .flatMap(Arrays::stream)
-                .toList();
-        for (Button button : buttons) {
-            button.setStyle("");
-            button.setDisable(false);
+            List<Button> buttons = Arrays.stream(allButtons)
+                    .flatMap(Arrays::stream)
+                    .flatMap(Arrays::stream)
+                    .flatMap(Arrays::stream)
+                    .toList();
+            for (Button button : buttons) {
+                button.setStyle("");
+                button.setDisable(false);
+            }
+
+            this.opacityTransition(restartIcon, 250, false);
         }
-
-        this.opacityTransition((Node) event.getSource(), 250, false);
     }
 
     private void opacityTransition(Node node, int durationMS, boolean in) {
@@ -229,6 +250,38 @@ public class Controller {
         }
 
         fade.play();
+    }
+
+    protected void showMenu() {
+        if(menu.isDisabled()) {
+            this.opacityTransition(menu, 200, true);
+            playButton.setText("Continue");
+        }
+    }
+
+    @FXML
+    private void hideMenu() {
+        this.opacityTransition(menu, 350, false);
+    }
+
+    @FXML
+    private void showInstructions() {
+
+    }
+
+    @FXML
+    private void terminate() {
+        int delay = 200;
+        this.opacityTransition(root, delay, false);
+
+        PauseTransition pause = new PauseTransition(Duration.millis(delay+5));
+
+        pause.setOnFinished(event -> {
+            Stage stage = (Stage) root.getScene().getWindow();
+            stage.close();
+        });
+
+        pause.play();
     }
 
     /**

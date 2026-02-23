@@ -34,3 +34,35 @@
 .bottom-left {
     -fx-background-radius: 0 0 0 10;
 }
+
+#playButton, #instructionsButton, #quitButton {
+
+    -fx-text-fill: #0d0d0d;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 22;
+
+    -fx-border-color: #0d0d0d;
+    -fx-border-width: 3;
+    -fx-border-insets: -1;
+    -fx-border-radius: 25 0 25 0;
+
+    -fx-background-radius: 25 0 25 0;
+}
+
+#playButton:hover {
+    -fx-background-color: #007aff;
+    -fx-border-insets: -3;
+    -fx-background-insets: -1;
+}
+
+#instructionsButton:hover {
+    -fx-background-color: #cdcdd1;
+    -fx-border-insets: -3;
+    -fx-background-insets: -1;
+}
+
+#quitButton:hover {
+    -fx-background-color: #fc3c2f;
+    -fx-border-insets: -3;
+    -fx-background-insets: -1;
+}
