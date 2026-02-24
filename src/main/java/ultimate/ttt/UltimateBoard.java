@@ -181,4 +181,8 @@ public class UltimateBoard {
         if(currentTurn == Player.BLUE) currentTurn = Player.RED;
         else if(currentTurn == Player.RED) currentTurn = Player.BLUE;
     }
+
+    protected Player getCurrentPlayer() {
+        return currentTurn;
+    }
 }

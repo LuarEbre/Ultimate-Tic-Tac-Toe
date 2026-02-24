@@ -112,15 +112,15 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="top-left" text="Button" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="bottom-right" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="top-left" text="Button" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="bottom-right" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
                            <GridPane.margin>
                               <Insets bottom="3.0" right="3.0" />
@@ -141,15 +141,15 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="bottom-left" text="Button" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="bottom-right" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="bottom-left" text="Button" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="bottom-right" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
                            <GridPane.margin>
                               <Insets bottom="3.0" left="3.0" right="3.0" />
@@ -170,15 +170,15 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="top-right" text="Button" GridPane.columnIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="bottom-left" text="Button" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="top-right" text="Button" GridPane.columnIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="bottom-left" text="Button" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
                            <GridPane.margin>
                               <Insets bottom="3.0" left="3.0" />
@@ -199,15 +199,15 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="top-right" text="Button" GridPane.columnIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="bottom-right" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="top-right" text="Button" GridPane.columnIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="bottom-right" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
                            <padding>
                               <Insets bottom="3.0" right="3.0" top="3.0" />
@@ -228,15 +228,15 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="top-left" text="Button" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="top-right" text="Button" GridPane.columnIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="bottom-left" text="Button" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="bottom-right" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="top-left" text="Button" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="top-right" text="Button" GridPane.columnIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="bottom-left" text="Button" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="bottom-right" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
                            <padding>
                               <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
@@ -254,15 +254,15 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="top-left" text="Button" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="bottom-left" text="Button" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="top-left" text="Button" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="bottom-left" text="Button" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
                            <padding>
                               <Insets bottom="3.0" left="3.0" top="3.0" />
@@ -283,15 +283,15 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="top-right" text="Button" GridPane.columnIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="bottom-left" text="Button" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="top-right" text="Button" GridPane.columnIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="bottom-left" text="Button" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
                            <padding>
                               <Insets right="3.0" top="3.0" />
@@ -312,15 +312,15 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="top-left" text="Button" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="top-right" text="Button" GridPane.columnIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="top-left" text="Button" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="top-right" text="Button" GridPane.columnIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
                            <padding>
                               <Insets left="3.0" right="3.0" top="3.0" />
@@ -341,15 +341,15 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="top-left" text="Button" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" styleClass="bottom-right" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="top-left" text="Button" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTileClick" onMouseClicked="#playTileSound" styleClass="bottom-right" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
                            <padding>
                               <Insets left="3.0" top="3.0" />
@@ -360,7 +360,7 @@
                         </GridPane>
                      </children>
                   </GridPane>
-                  <ImageView fx:id="restartIcon" fitHeight="263.0" fitWidth="263.0" onMouseClicked="#restart" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="269.0" AnchorPane.topAnchor="269.0">
+                  <ImageView fx:id="restartIcon" fitHeight="263.0" fitWidth="263.0" onMouseClicked="#restart" onMouseEntered="#playHoverSound" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="269.0" AnchorPane.topAnchor="269.0">
                      <image>
                         <Image url="@Images/restartIcon.png" />
                      </image>
@@ -376,9 +376,9 @@
                   <Image url="@Images/menu.png" />
                </image>
             </ImageView>
-            <Button fx:id="playButton" mnemonicParsing="false" onAction="#hideMenu" onMouseEntered="#playHoverSound" text="Play" AnchorPane.bottomAnchor="475.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="460.0" />
-            <Button fx:id="instructionsButton" mnemonicParsing="false" onAction="#showInstructions" onMouseEntered="#playHoverSound" text="Instructions" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="575.0" />
-            <Button fx:id="quitButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#terminate" onMouseEntered="#playHoverSound" text="Quit" AnchorPane.bottomAnchor="245.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="690.0" />
+            <Button fx:id="playButton" mnemonicParsing="false" onAction="#hideMenu" onMouseClicked="#playClickSound" onMouseEntered="#playHoverSound" text="Play" AnchorPane.bottomAnchor="475.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="460.0" />
+            <Button fx:id="instructionsButton" mnemonicParsing="false" onAction="#showInstructions" onMouseClicked="#playClickSound" onMouseEntered="#playHoverSound" text="Instructions" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="575.0" />
+            <Button fx:id="quitButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#terminate" onMouseClicked="#playClickSound" onMouseEntered="#playHoverSound" text="Quit" AnchorPane.bottomAnchor="245.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="690.0" />
             <Text layoutX="167.0" layoutY="797.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2026 Raul Erbe" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
                <font>
                   <Font size="18.0" />

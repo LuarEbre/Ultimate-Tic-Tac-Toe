@@ -19,21 +19,19 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/ultimateTicTacToeGUI.fxml"));
         Parent root = loader.load();
 
         stage.initStyle(StageStyle.TRANSPARENT);
-
         Scene scene = new Scene(root, 800, 1000);
         scene.setFill(Color.TRANSPARENT);
-
-        // 1. Load the image from your resources
-        Image appIcon = new Image(getClass().getResourceAsStream("/GUI/Images/logo.png"));
-
-        // 2. Add it to the stage's icon list
-        stage.getIcons().add(appIcon);
-
         scene.getStylesheets().add(getClass().getResource("/GUI/ultimateTicTacToe.css").toExternalForm());
+
+        stage.setTitle("Ultimate Tic Tac Toe");
+
+        Image appIcon = new Image(getClass().getResourceAsStream("/GUI/Images/logo.png"));
+        stage.getIcons().add(appIcon);
 
         root.setOnMousePressed(event -> {
             xOffset = event.getSceneX();

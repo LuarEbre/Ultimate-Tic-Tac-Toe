@@ -20,6 +20,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Controller {
 
@@ -36,16 +37,18 @@ public class Controller {
     private Button[][][][] allButtons;
 
     @FXML
-    private Button playButton, instructionsButton, quitButton;
+    private Button playButton;
 
     @FXML
-    private Text titletext, bluesturn, redsturn, drawtext;
+    private Text bluesturn, redsturn, drawtext;
 
     private Player startingPlayer;
 
     private UltimateBoard gameBoard;
 
-    private AudioClip localWinSound, globalWinSound, globalDrawSound, hoverSound, clickSound;
+    private AudioClip localWinSound, globalWinSound, globalDrawSound, hoverSound, clickSound, gameStart, tileSound;
+
+    private Random random;
 
     private void initializeSounds() {
         localWinSound = new AudioClip(getClass().getResource("/Sounds/localVictory.mp3").toExternalForm());
@@ -53,19 +56,11 @@ public class Controller {
         globalDrawSound = new  AudioClip(getClass().getResource("/Sounds/draw.mp3").toExternalForm());
         hoverSound =  new AudioClip(getClass().getResource("/Sounds/swipe.mp3").toExternalForm());
         clickSound = new AudioClip(getClass().getResource("/Sounds/button.mp3").toExternalForm());
+        gameStart = new  AudioClip(getClass().getResource("/Sounds/gameStart.mp3").toExternalForm());
+        tileSound = new  AudioClip(getClass().getResource("/Sounds/claimTile.mp3").toExternalForm());
     }
 
-    @FXML
-    private void playHoverSound() {
-        hoverSound.play();
-    }
-
-    @FXML
-    public void initialize() {
-
-        this.initializeSounds();
-
-        // round the corners of main menu png
+    private void initializeMainMenu() {
         Rectangle clip = new Rectangle();
 
         clip.setArcWidth(30);
@@ -75,14 +70,18 @@ public class Controller {
         clip.heightProperty().bind(root.heightProperty());
 
         menuImage.setClip(clip);
+    }
 
+    private void initializeIconsAndText() {
         restartIcon.setOpacity(0.0);
         restartIcon.setDisable(true);
 
         bluesturn.setVisible(true);
         redsturn.setVisible(false);
         drawtext.setVisible(false);
+    }
 
+    private void initializeGrid() {
         // initialize all 81 buttons into 4D array
         allButtons = new Button[3][3][3][3];
 
@@ -116,9 +115,49 @@ public class Controller {
                 }
             }
         }
-        // initialize gameBoard with 4D array and starting player
+    }
+    @FXML
+    public void initialize() {
+
         this.startingPlayer = Player.BLUE;
+
+        this.random = new Random();
+        this.initializeSounds();
+        this.initializeMainMenu();
+        this.initializeIconsAndText();
+        this.initializeGrid();
+
         gameBoard = new UltimateBoard(allButtons, startingPlayer, localWinSound);
+    }
+
+    @FXML
+    private void playHoverSound() {
+        playWithRandomPitchAndPan(hoverSound, 0.6, -60.0, 60.0);
+    }
+
+    @FXML
+    private void playClickSound() {
+        playWithRandomPitchAndPan(clickSound, 0.4, -60.0, 60.0);
+    }
+
+    @FXML
+    private void playTileSound() {
+        playWithPlayerPitch(tileSound, 0.6);
+    }
+
+    private void playWithRandomPitchAndPan(AudioClip clip, double volume, double pitchLower, double pitchUpper) {
+        double cents = pitchLower + ((pitchUpper*2) * random.nextDouble());
+        double rate = Math.pow(2.0, cents / 1200.0);
+        double pan = -0.3 + (0.6 * random.nextDouble());
+        clip.play(volume, pan, rate, 0.0, 0);
+    }
+
+    private void playWithPlayerPitch(AudioClip clip, double volume) {
+        if(gameBoard.getCurrentPlayer() == Player.BLUE) {
+            playWithRandomPitchAndPan(clip, volume, -60.0, 10.0);
+        } else {
+            playWithRandomPitchAndPan(clip, volume, -10.0, 60.0);
+        }
     }
 
     /**
@@ -177,6 +216,7 @@ public class Controller {
             redsturn.setVisible(true);
         }
 
+        globalWinSound.play();
         animateBoardFill(style);
     }
 
@@ -189,6 +229,7 @@ public class Controller {
         redsturn.setVisible(false);
         drawtext.setVisible(true);
 
+        globalDrawSound.play();
         animateBoardFill("-fx-background-color: #8e8e93");
     }
 
@@ -261,6 +302,7 @@ public class Controller {
                 button.setDisable(false);
             }
 
+            clickSound.play();
             this.opacityTransition(restartIcon, 250, false);
         }
     }
@@ -290,6 +332,10 @@ public class Controller {
 
     @FXML
     private void hideMenu() {
+        if(gameStart != null) {
+            gameStart.play();
+            gameStart = null;
+        }
         this.opacityTransition(menu, 350, false);
     }
 
