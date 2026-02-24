@@ -3,19 +3,22 @@ package ultimate.ttt;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.control.Button;
+import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
 
 public class Board {
     private Button[][] board = new Button[3][3];
     private final ButtonState[][] buttonStates = new ButtonState[3][3];
     private BoardState state;
+    private AudioClip localWinSound;
 
     /**
      * Constructor sets new board's state to {@link BoardState#UNCLAIMED} and all contained buttons' state to {@link ButtonState#EMPTY}
      * @param board 2D array of {@link Button}
      */
-    Board(Button[][] board) {
+    public Board(Button[][] board, AudioClip localWinSound) {
         this.board = board;
+        this.localWinSound = localWinSound;
         state = BoardState.UNCLAIMED;
 
         for(int row=0; row<3; row++) {
@@ -34,28 +37,29 @@ public class Board {
      *
      * @param localRow    The row index (0-2) of the clicked button within this local board.
      * @param localColumn The column index (0-2) of the clicked button within this local board.
-     * @param player      The {@link Players} enum representing the player making the move (e.g., BLUE or RED).
+     * @param player      The {@link Player} enum representing the player making the move (e.g., BLUE or RED).
      */
-    public void buttonPress(int localRow, int localColumn, Players player) {
+    public void buttonPress(int localRow, int localColumn, Player player) {
 
         Button affectedButton = board[localRow][localColumn];
         affectedButton.setDisable(true);
 
-        if(player == Players.BLUE) {
+        if(player == Player.BLUE) {
             affectedButton.setStyle("-fx-background-color: #007aff");
             buttonStates[localRow][localColumn] = ButtonState.CLAIMED_BLUE;
         }
 
-        if(player == Players.RED) {
+        if(player == Player.RED) {
             affectedButton.setStyle("-fx-background-color: #fc3c2f");
             buttonStates[localRow][localColumn] = ButtonState.CLAIMED_RED;
         }
 
-        Players winner = this.checkForWinner();
+        Player winner = this.checkForWinner();
 
         // no more operations in case of no winner
-        if(winner == Players.NONE) return;
+        if(winner == Player.NONE) return;
 
+        this.localWinSound.play();
         this.disableAllButtons();
         this.claimAll(winner);
         this.paintAllButtons();
@@ -63,60 +67,60 @@ public class Board {
 
     /**
      * Checks for local winners horizontally, vertically, and diagonally (top-right to bottom-left & top-left to bottom-right)
-     * @return {@link Players#RED} or {@link Players#BLUE} in case of there being a winner <br>
-     * {@link Players#NONE} if there is no winner
+     * @return {@link Player#RED} or {@link Player#BLUE} in case of there being a winner <br>
+     * {@link Player#NONE} if there is no winner
      */
-    private Players checkForWinner() {
-        Players winner = Players.NONE;
+    private Player checkForWinner() {
+        Player winner = Player.NONE;
 
         for (int i = 0; i < 3; i++) {
             // Horizontal check
             if (isClaimed(buttonStates[i][0]) &&
                     buttonStates[i][0] == buttonStates[i][1] &&
                     buttonStates[i][0] == buttonStates[i][2]) {
-                winner = (buttonStates[i][0] == ButtonState.CLAIMED_RED) ? Players.RED : Players.BLUE;
+                winner = (buttonStates[i][0] == ButtonState.CLAIMED_RED) ? Player.RED : Player.BLUE;
             }
             // Vertical check
             else if (isClaimed(buttonStates[0][i]) &&
                     buttonStates[0][i] == buttonStates[1][i] &&
                     buttonStates[0][i] == buttonStates[2][i]) {
-                winner = (buttonStates[0][i] == ButtonState.CLAIMED_RED) ? Players.RED : Players.BLUE;
+                winner = (buttonStates[0][i] == ButtonState.CLAIMED_RED) ? Player.RED : Player.BLUE;
             }
         }
 
         // Diagonal checks
-        if (winner == Players.NONE) {
+        if (winner == Player.NONE) {
             if (isClaimed(buttonStates[0][0]) && buttonStates[0][0] == buttonStates[1][1] && buttonStates[0][0] == buttonStates[2][2]) {
-                winner = (buttonStates[0][0] == ButtonState.CLAIMED_RED) ? Players.RED : Players.BLUE;
+                winner = (buttonStates[0][0] == ButtonState.CLAIMED_RED) ? Player.RED : Player.BLUE;
             } else if (isClaimed(buttonStates[0][2]) && buttonStates[0][2] == buttonStates[1][1] && buttonStates[0][2] == buttonStates[2][0]) {
-                winner = (buttonStates[0][2] == ButtonState.CLAIMED_RED) ? Players.RED : Players.BLUE;
+                winner = (buttonStates[0][2] == ButtonState.CLAIMED_RED) ? Player.RED : Player.BLUE;
             }
         }
 
         // Update BoardState
-        if (winner == Players.RED) {
+        if (winner == Player.RED) {
             this.state = BoardState.CLAIMED_RED;
-            return Players.RED;
-        } else if (winner == Players.BLUE) {
+            return Player.RED;
+        } else if (winner == Player.BLUE) {
             this.state = BoardState.CLAIMED_BLUE;
-            return Players.BLUE;
+            return Player.BLUE;
         }
 
         // If neither Blue nor Red have a valid path to victory, it's a dead board.
-        if (!canPlayerWinLocal(Players.BLUE) && !canPlayerWinLocal(Players.RED)) {
+        if (!canPlayerWinLocal(Player.BLUE) && !canPlayerWinLocal(Player.RED)) {
             this.state = BoardState.DRAW;
         }
 
         // No winner (might be drawn, might be unclaimed)
-        return Players.NONE;
+        return Player.NONE;
     }
 
     /**
      * Predictive check to see if a player has at least one possible path to victory.
      * A path is valid if it contains none of the opponent's claimed tiles.
      */
-    private boolean canPlayerWinLocal(Players player) {
-        ButtonState opponent = (player == Players.BLUE) ? ButtonState.CLAIMED_RED : ButtonState.CLAIMED_BLUE;
+    private boolean canPlayerWinLocal(Player player) {
+        ButtonState opponent = (player == Player.BLUE) ? ButtonState.CLAIMED_RED : ButtonState.CLAIMED_BLUE;
 
         for (int i = 0; i < 3; i++) {
 
@@ -133,11 +137,11 @@ public class Board {
 
     /**
      * Sets the board to CLAIMED_X and all of its Buttons to CLAIMED_X
-     * @param winner {@link Players#BLUE} or {@link Players#RED}
+     * @param winner {@link Player#BLUE} or {@link Player#RED}
      */
-    private void claimAll(Players winner) {
+    private void claimAll(Player winner) {
         ButtonState winningState;
-        if (winner == Players.BLUE) {
+        if (winner == Player.BLUE) {
             this.state = BoardState.CLAIMED_BLUE;
             winningState = ButtonState.CLAIMED_BLUE;
         } else {

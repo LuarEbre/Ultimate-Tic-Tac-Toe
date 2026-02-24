@@ -371,19 +371,19 @@
       </VBox>
       <AnchorPane fx:id="menu" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="menuImage" fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" styleClass="menuImage" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fx:id="menuImage" fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
                   <Image url="@Images/menu.png" />
                </image>
             </ImageView>
-            <Button fx:id="playButton" mnemonicParsing="false" onAction="#hideMenu" styleClass="menuButton1" text="Play" AnchorPane.bottomAnchor="475.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="460.0" />
-            <Button fx:id="instructionsButton" mnemonicParsing="false" onAction="#showInstructions" styleClass="menuButton2" text="Instructions" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="575.0" />
+            <Button fx:id="playButton" mnemonicParsing="false" onAction="#hideMenu" onMouseEntered="#playHoverSound" text="Play" AnchorPane.bottomAnchor="475.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="460.0" />
+            <Button fx:id="instructionsButton" mnemonicParsing="false" onAction="#showInstructions" onMouseEntered="#playHoverSound" text="Instructions" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="575.0" />
+            <Button fx:id="quitButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#terminate" onMouseEntered="#playHoverSound" text="Quit" AnchorPane.bottomAnchor="245.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="690.0" />
             <Text layoutX="167.0" layoutY="797.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2026 Raul Erbe" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button fx:id="quitButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#terminate" styleClass="menuButton1" text="Quit" AnchorPane.bottomAnchor="245.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="690.0" />
          </children>
       </AnchorPane>
    </children>

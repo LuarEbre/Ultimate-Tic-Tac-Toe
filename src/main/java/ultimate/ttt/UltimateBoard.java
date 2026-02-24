@@ -1,17 +1,18 @@
 package ultimate.ttt;
 
 import javafx.scene.control.Button;
+import javafx.scene.media.AudioClip;
 
 public class UltimateBoard {
     private Board[][] boards;
-    private Players currentTurn;
+    private Player currentTurn;
 
     /**
      * Constructs all local boards and assigns them to {@link #boards}
      * @param buttons 4D array of buttons
-     * @param firstTurn {@link Players} who has the first turn
+     * @param firstTurn {@link Player} who has the first turn
      */
-    public UltimateBoard(Button[][][][] buttons, Players firstTurn) {
+    public UltimateBoard(Button[][][][] buttons, Player firstTurn, AudioClip localWinSound) {
 
         this.boards = new Board[3][3];
         this.currentTurn = firstTurn;
@@ -21,7 +22,7 @@ public class UltimateBoard {
 
                 Button[][] localButtons = buttons[row][column];
 
-                boards[row][column] = new Board(localButtons);
+                boards[row][column] = new Board(localButtons, localWinSound);
             }
         }
     }
@@ -39,11 +40,11 @@ public class UltimateBoard {
      * @param globalColumn The column index (0-2) of the local board within the macro-board.
      * @param localRow     The row index (0-2) of the clicked tile within the specific local board.
      * @param localColumn  The column index (0-2) of the clicked tile within the specific local board.
-     * @return             The {@link Players} enum representing the overall game winner <br>
-     * {@link Players#BLUE} or {@link Players#RED} in case of there being a winner <br>
-     * {@link Players#NONE} if the game is still ongoing.
+     * @return             The {@link Player} enum representing the overall game winner <br>
+     * {@link Player#BLUE} or {@link Player#RED} in case of there being a winner <br>
+     * {@link Player#NONE} if the game is still ongoing.
      */
-    public Players buttonPress(int globalRow, int globalColumn, int localRow, int localColumn) {
+    public Player buttonPress(int globalRow, int globalColumn, int localRow, int localColumn) {
         Board affectedBoard = boards[globalRow][globalColumn];
         affectedBoard.buttonPress(localRow, localColumn, currentTurn);
 
@@ -59,21 +60,21 @@ public class UltimateBoard {
     }
     /**
      * Checks for global winners horizontally, vertically, and diagonally (top-right to bottom-left & top-left to bottom-right)
-     * @return {@link Players#RED} or {@link Players#BLUE} in case of there being a winner <br>
-     * {@link Players#NONE} if there is no winner
+     * @return {@link Player#RED} or {@link Player#BLUE} in case of there being a winner <br>
+     * {@link Player#NONE} if there is no winner
      */
-    private Players checkForWinner() {
+    private Player checkForWinner() {
 
         for (int i = 0; i < 3; i++) {
             // Horizontal check
-            if (isBoardClaimedBy(i, 0) != Players.NONE &&
+            if (isBoardClaimedBy(i, 0) != Player.NONE &&
                     isBoardClaimedBy(i, 0) == isBoardClaimedBy(i, 1) &&
                     isBoardClaimedBy(i, 0) == isBoardClaimedBy(i, 2)) {
                 return isBoardClaimedBy(i, 0);
             }
 
             // Vertical check
-            if (isBoardClaimedBy(0, i) != Players.NONE &&
+            if (isBoardClaimedBy(0, i) != Player.NONE &&
                     isBoardClaimedBy(0, i) == isBoardClaimedBy(1, i) &&
                     isBoardClaimedBy(0, i) == isBoardClaimedBy(2, i)) {
                 return isBoardClaimedBy(0, i);
@@ -81,23 +82,23 @@ public class UltimateBoard {
         }
 
         // Diagonal checks
-        if (isBoardClaimedBy(0, 0) != Players.NONE &&
+        if (isBoardClaimedBy(0, 0) != Player.NONE &&
                 isBoardClaimedBy(0, 0) == isBoardClaimedBy(1, 1) &&
                 isBoardClaimedBy(0, 0) == isBoardClaimedBy(2, 2)) {
             return isBoardClaimedBy(0, 0);
         }
 
-        if (isBoardClaimedBy(0, 2) != Players.NONE &&
+        if (isBoardClaimedBy(0, 2) != Player.NONE &&
                 isBoardClaimedBy(0, 2) == isBoardClaimedBy(1, 1) &&
                 isBoardClaimedBy(0, 2) == isBoardClaimedBy(2, 0)) {
             return isBoardClaimedBy(0, 2);
         }
 
-        return Players.NONE;
+        return Player.NONE;
     }
 
-    private boolean canPlayerWinGlobal(Players player) {
-        BoardState opponentBoard = (player == Players.BLUE) ? BoardState.CLAIMED_RED : BoardState.CLAIMED_BLUE;
+    private boolean canPlayerWinGlobal(Player player) {
+        BoardState opponentBoard = (player == Player.BLUE) ? BoardState.CLAIMED_RED : BoardState.CLAIMED_BLUE;
 
         for (int i = 0; i < 3; i++) {
             // Check Rows
@@ -134,7 +135,7 @@ public class UltimateBoard {
      * Predicts if the entire game has entered an unwinnable state for both players.
      */
     protected boolean checkForDraw() {
-        return !canPlayerWinGlobal(Players.BLUE) && !canPlayerWinGlobal(Players.RED);
+        return !canPlayerWinGlobal(Player.BLUE) && !canPlayerWinGlobal(Player.RED);
     }
 
     /**
@@ -143,11 +144,11 @@ public class UltimateBoard {
      * @param c column
      * @return claimee of the tile at (r, c)
      */
-    private Players isBoardClaimedBy(int r, int c) {
+    private Player isBoardClaimedBy(int r, int c) {
         BoardState s = boards[r][c].getState();
-        if (s == BoardState.CLAIMED_RED) return Players.RED;
-        if (s == BoardState.CLAIMED_BLUE) return Players.BLUE;
-        return Players.NONE;
+        if (s == BoardState.CLAIMED_RED) return Player.RED;
+        if (s == BoardState.CLAIMED_BLUE) return Player.BLUE;
+        return Player.NONE;
     }
 
     /**
@@ -177,7 +178,7 @@ public class UltimateBoard {
      * Swaps the player's control
      */
     protected void switchPlayers() {
-        if(currentTurn == Players.BLUE) currentTurn = Players.RED;
-        else if(currentTurn == Players.RED) currentTurn = Players.BLUE;
+        if(currentTurn == Player.BLUE) currentTurn = Player.RED;
+        else if(currentTurn == Player.RED) currentTurn = Player.BLUE;
     }
 }

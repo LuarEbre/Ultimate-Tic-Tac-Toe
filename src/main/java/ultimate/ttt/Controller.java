@@ -9,13 +9,14 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.AudioClip;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.shape.Rectangle;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,12 +41,29 @@ public class Controller {
     @FXML
     private Text titletext, bluesturn, redsturn, drawtext;
 
-    private Players startingPlayer;
+    private Player startingPlayer;
 
     private UltimateBoard gameBoard;
 
+    private AudioClip localWinSound, globalWinSound, globalDrawSound, hoverSound, clickSound;
+
+    private void initializeSounds() {
+        localWinSound = new AudioClip(getClass().getResource("/Sounds/localVictory.mp3").toExternalForm());
+        globalWinSound = new AudioClip(getClass().getResource("/Sounds/victory.mp3").toExternalForm());
+        globalDrawSound = new  AudioClip(getClass().getResource("/Sounds/draw.mp3").toExternalForm());
+        hoverSound =  new AudioClip(getClass().getResource("/Sounds/swipe.mp3").toExternalForm());
+        clickSound = new AudioClip(getClass().getResource("/Sounds/button.mp3").toExternalForm());
+    }
+
+    @FXML
+    private void playHoverSound() {
+        hoverSound.play();
+    }
+
     @FXML
     public void initialize() {
+
+        this.initializeSounds();
 
         // round the corners of main menu png
         Rectangle clip = new Rectangle();
@@ -99,8 +117,8 @@ public class Controller {
             }
         }
         // initialize gameBoard with 4D array and starting player
-        this.startingPlayer = Players.BLUE;
-        gameBoard = new UltimateBoard(allButtons, startingPlayer);
+        this.startingPlayer = Player.BLUE;
+        gameBoard = new UltimateBoard(allButtons, startingPlayer, localWinSound);
     }
 
     /**
@@ -125,9 +143,9 @@ public class Controller {
         int globalCol = (gCol == null) ? 0 : gCol;
         int globalRow = (gRow == null) ? 0 : gRow;
 
-        Players winner = gameBoard.buttonPress(globalRow, globalCol, localRow, localCol);
+        Player winner = gameBoard.buttonPress(globalRow, globalCol, localRow, localCol);
 
-        if (winner == Players.NONE) {
+        if (winner == Player.NONE) {
             // only need to switch players if there is no winner
             switchPlayers();
             // only check for draw if no there is no winner
@@ -142,14 +160,14 @@ public class Controller {
      * Displays the correct winner and paints all buttons in the winner's color using {@link #animateBoardFill(String)}
      * @param winner
      */
-    private void crown(Players winner) {
+    private void crown(Player winner) {
         gameBoard.disableAllBoards();
 
         bluesturn.setVisible(false);
         redsturn.setVisible(false);
 
         String style;
-        if (winner == Players.BLUE) {
+        if (winner == Player.BLUE) {
             style = "-fx-background-color: #007aff";
             bluesturn.setText("Blue wins!");
             bluesturn.setVisible(true);
@@ -223,15 +241,15 @@ public class Controller {
             this.bluesturn.setVisible(false);
             this.redsturn.setText("Red's turn!");
             this.bluesturn.setText("Blue's turn!");
-            if(startingPlayer==Players.BLUE) {
-                startingPlayer = Players.RED;
+            if(startingPlayer== Player.BLUE) {
+                startingPlayer = Player.RED;
                 redsturn.setVisible(true);
             } else {
-                startingPlayer = Players.BLUE;
+                startingPlayer = Player.BLUE;
                 bluesturn.setVisible(true);
             }
 
-            this.gameBoard = new UltimateBoard(allButtons, startingPlayer);
+            this.gameBoard = new UltimateBoard(allButtons, startingPlayer, localWinSound);
 
             List<Button> buttons = Arrays.stream(allButtons)
                     .flatMap(Arrays::stream)
