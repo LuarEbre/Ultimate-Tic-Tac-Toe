@@ -1,6 +1,6 @@
 package ultimate.ttt;
 
-public enum Players {
+public enum Player {
     NONE,
     BLUE,
     RED
