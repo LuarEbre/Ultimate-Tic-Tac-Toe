@@ -2,11 +2,13 @@ package ultimate.ttt;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -24,7 +26,8 @@ public class App extends Application {
         Parent root = loader.load();
 
         stage.initStyle(StageStyle.TRANSPARENT);
-        Scene scene = new Scene(root, 800, 1000);
+
+        Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
         scene.getStylesheets().add(getClass().getResource("/GUI/ultimateTicTacToe.css").toExternalForm());
 
@@ -45,7 +48,7 @@ public class App extends Application {
         Controller myController = loader.getController();
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ESCAPE) {
-                myController.showMenu();
+                myController.hideMenu();
             }
             if (event.getCode() == KeyCode.R) {
                 myController.restart();

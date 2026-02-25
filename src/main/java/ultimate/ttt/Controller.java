@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -40,6 +41,9 @@ public class Controller {
     private Button playButton;
 
     @FXML
+    private ToggleButton soundToggle;
+
+    @FXML
     private Text bluesturn, redsturn, drawtext;
 
     private Player startingPlayer;
@@ -48,16 +52,32 @@ public class Controller {
 
     private AudioClip localWinSound, globalWinSound, globalDrawSound, hoverSound, clickSound, gameStart, tileSound;
 
+    private AudioClip[] allAudios;
+
     private Random random;
 
     private void initializeSounds() {
-        localWinSound = new AudioClip(getClass().getResource("/Sounds/localVictory.mp3").toExternalForm());
-        globalWinSound = new AudioClip(getClass().getResource("/Sounds/victory.mp3").toExternalForm());
-        globalDrawSound = new  AudioClip(getClass().getResource("/Sounds/draw.mp3").toExternalForm());
-        hoverSound =  new AudioClip(getClass().getResource("/Sounds/swipe.mp3").toExternalForm());
-        clickSound = new AudioClip(getClass().getResource("/Sounds/button.mp3").toExternalForm());
-        gameStart = new  AudioClip(getClass().getResource("/Sounds/gameStart.mp3").toExternalForm());
-        tileSound = new  AudioClip(getClass().getResource("/Sounds/claimTile.mp3").toExternalForm());
+        this.localWinSound = new AudioClip(getClass().getResource("/Sounds/localVictory.mp3").toExternalForm());
+        this.globalWinSound = new AudioClip(getClass().getResource("/Sounds/victory.mp3").toExternalForm());
+        this.globalDrawSound = new  AudioClip(getClass().getResource("/Sounds/draw.mp3").toExternalForm());
+        this.hoverSound =  new AudioClip(getClass().getResource("/Sounds/swipe.mp3").toExternalForm());
+        this.clickSound = new AudioClip(getClass().getResource("/Sounds/button.mp3").toExternalForm());
+        this.gameStart = new  AudioClip(getClass().getResource("/Sounds/gameStart.mp3").toExternalForm());
+        this.tileSound = new  AudioClip(getClass().getResource("/Sounds/claimTile.mp3").toExternalForm());
+        // aggregate all AudioClips into Array
+        this.allAudios = new AudioClip[] {localWinSound, globalWinSound, globalDrawSound, hoverSound, clickSound, gameStart, tileSound};
+    }
+
+    private void initializeMute() {
+        soundToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                // if toggled ON = muted
+                for(AudioClip clip : this.allAudios) clip.setVolume(0.0);
+            } else {
+                // if toggled OFF = unmute
+                for(AudioClip clip : this.allAudios) clip.setVolume(1.0);
+            }
+        });
     }
 
     private void initializeMainMenu() {
@@ -123,6 +143,7 @@ public class Controller {
 
         this.random = new Random();
         this.initializeSounds();
+        this.initializeMute();
         this.initializeMainMenu();
         this.initializeIconsAndText();
         this.initializeGrid();
@@ -146,6 +167,7 @@ public class Controller {
     }
 
     private void playWithRandomPitchAndPan(AudioClip clip, double volume, double pitchLower, double pitchUpper) {
+        if(clip.getVolume() == 0.0) return;
         double cents = pitchLower + ((pitchUpper*2) * random.nextDouble());
         double rate = Math.pow(2.0, cents / 1200.0);
         double pan = -0.3 + (0.6 * random.nextDouble());
@@ -323,20 +345,18 @@ public class Controller {
         fade.play();
     }
 
-    protected void showMenu() {
+    @FXML
+    protected void hideMenu() {
         if(menu.isDisabled()) {
             this.opacityTransition(menu, 200, true);
             playButton.setText("Continue");
+        } else {
+            if(gameStart != null) {
+                gameStart.play();
+                gameStart = null;
+            }
+            this.opacityTransition(menu, 350, false);
         }
-    }
-
-    @FXML
-    private void hideMenu() {
-        if(gameStart != null) {
-            gameStart.play();
-            gameStart = null;
-        }
-        this.opacityTransition(menu, 350, false);
     }
 
     @FXML

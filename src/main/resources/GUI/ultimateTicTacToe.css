@@ -16,6 +16,7 @@
 }
 
 .button:hover {
+    -fx-cursor: hand;
     -fx-background-color: #cdcdd1;
 }
 
@@ -66,4 +67,29 @@
     -fx-background-color: #fc3c2f;
     -fx-border-insets: -3;
     -fx-background-insets: -1;
+}
+
+#soundToggle {
+    -fx-background-color: #cdcdd1;
+    -fx-background-radius: 7;
+    -fx-background-image: url('/GUI/Images/unmute.png');
+    -fx-background-size: 40px 40px; /* This tames the giant! */
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+
+    /* Optional: Force the button itself to be a nice 60x60 circle/square */
+    -fx-min-width: 60;
+    -fx-min-height: 60;
+}
+
+#soundToggle:selected {
+    -fx-background-image: url('/GUI/Images/mute.png');
+}
+
+#soundToggle:hover {
+    -fx-cursor: hand;
+    -fx-border-color: #77777A;
+    -fx-border-radius: 7;
+    -fx-border-insets: -2;
+    -fx-border-width: 2;
 }
