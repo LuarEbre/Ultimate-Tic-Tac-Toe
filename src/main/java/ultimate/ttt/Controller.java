@@ -41,7 +41,7 @@ public class Controller {
     private Button playButton;
 
     @FXML
-    private ToggleButton soundToggle;
+    private ToggleButton soundToggle, blueScoreDisplay, redScoreDisplay;
 
     @FXML
     private Text bluesturn, redsturn, drawtext;
@@ -55,6 +55,8 @@ public class Controller {
     private AudioClip[] allAudios;
 
     private Random random;
+
+    private int blueScore, redScore;
 
     private void initializeSounds() {
         this.localWinSound = new AudioClip(getClass().getResource("/Sounds/localVictory.mp3").toExternalForm());
@@ -148,6 +150,8 @@ public class Controller {
         this.initializeIconsAndText();
         this.initializeGrid();
 
+        this.blueScore = 0;
+        this.redScore = 0;
         gameBoard = new UltimateBoard(allButtons, startingPlayer, localWinSound);
     }
 
@@ -239,6 +243,7 @@ public class Controller {
         }
 
         globalWinSound.play();
+        updateScore(winner);
         animateBoardFill(style);
     }
 
@@ -253,6 +258,26 @@ public class Controller {
 
         globalDrawSound.play();
         animateBoardFill("-fx-background-color: #8e8e93");
+    }
+
+    private void updateScore(Player winner) {
+        if(winner == Player.BLUE) {
+            this.blueScore++;
+            blueScoreDisplay.setText(Integer.toString(this.blueScore));
+        } else {
+            this.redScore++;
+            redScoreDisplay.setText(Integer.toString(this.redScore));
+        }
+        if(blueScore > redScore) {
+            blueScoreDisplay.setSelected(true);
+            redScoreDisplay.setSelected(false);
+        } else if(redScore > blueScore) {
+            blueScoreDisplay.setSelected(false);
+            redScoreDisplay.setSelected(true);
+        } else {
+            blueScoreDisplay.setSelected(false);
+            redScoreDisplay.setSelected(false);
+        }
     }
 
     /**

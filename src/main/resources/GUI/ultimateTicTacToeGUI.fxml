@@ -67,6 +67,8 @@
                         </AnchorPane>
                         <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" VBox.vgrow="NEVER">
                            <children>
+                              <ToggleButton fx:id="blueScoreDisplay" disable="true" mnemonicParsing="false" prefHeight="37.0" prefWidth="180.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="13.0" />
+                              <ToggleButton fx:id="redScoreDisplay" disable="true" layoutX="618.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="13.0" />
                               <Text fx:id="redsturn" fill="#fc3c2f" strokeType="OUTSIDE" strokeWidth="0.0" text="Red's Turn" visible="false" AnchorPane.leftAnchor="316.0" AnchorPane.topAnchor="8.0">
                                  <font>
                                     <Font name="Segoe UI Semibold" size="35.0" />

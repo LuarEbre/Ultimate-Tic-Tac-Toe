@@ -36,6 +36,50 @@
     -fx-background-radius: 0 0 0 10;
 }
 
+#blueScoreDisplay {
+    -fx-background-color: #007aff;
+    -fx-background-radius: 0 5 5 0;
+
+    -fx-border-color: #005edd;
+    -fx-border-radius: 0 6 6 0;
+}
+
+#redScoreDisplay {
+    -fx-background-color: #fc3c2f;
+    -fx-background-radius: 5 0 0 5;
+
+    -fx-border-color: #d60014;
+    -fx-border-radius: 6 0 0 6;
+}
+
+#blueScoreDisplay, #redScoreDisplay {
+    -fx-font-family: Segoe UI;
+    -fx-font-weight: bold;
+    -fx-font-size: 17;
+    -fx-text-fill: #f1f1f1;
+
+    -fx-border-insets: -2;
+    -fx-border-width: 3px;
+}
+
+#blueScoreDisplay:selected {
+    -fx-background-image: url('/GUI/Images/crown.png');
+    -fx-background-size: 27px 27px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 90% center;
+}
+
+#redScoreDisplay:selected {
+    -fx-background-image: url('/GUI/Images/crown.png');
+    -fx-background-size: 27px 27px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10% center;
+}
+
+#blueScoreDisplay:disabled, #redScoreDisplay:disabled {
+    -fx-opacity: 1.0;
+}
+
 #playButton, #instructionsButton, #quitButton {
 
     -fx-text-fill: #0d0d0d;
