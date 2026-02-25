@@ -48,7 +48,7 @@ public class App extends Application {
         Controller myController = loader.getController();
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ESCAPE) {
-                myController.hideMenu();
+                myController.handleEsc();
             }
             if (event.getCode() == KeyCode.R) {
                 myController.restart();

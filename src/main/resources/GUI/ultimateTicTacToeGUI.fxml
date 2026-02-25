@@ -34,6 +34,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -45,6 +46,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.shape.SVGPath?>
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="800.0" styleClass="backgroundPane" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ultimate.ttt.Controller">
    <children>
       <VBox prefHeight="1000.0" prefWidth="800.0">
@@ -69,12 +71,12 @@
                            <children>
                               <ToggleButton fx:id="blueScoreDisplay" disable="true" mnemonicParsing="false" prefHeight="37.0" prefWidth="180.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="13.0" />
                               <ToggleButton fx:id="redScoreDisplay" disable="true" layoutX="618.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="13.0" />
-                              <Text fx:id="redsturn" fill="#fc3c2f" strokeType="OUTSIDE" strokeWidth="0.0" text="Red's Turn" visible="false" AnchorPane.leftAnchor="316.0" AnchorPane.topAnchor="8.0">
+                              <Text fx:id="redsTurn" fill="#fc3c2f" strokeType="OUTSIDE" strokeWidth="0.0" text="Red's Turn" visible="false" AnchorPane.leftAnchor="316.0" AnchorPane.topAnchor="8.0">
                                  <font>
                                     <Font name="Segoe UI Semibold" size="35.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="bluesturn" fill="#007aff" strokeType="OUTSIDE" strokeWidth="0.0" text="Blue's Turn" AnchorPane.leftAnchor="312.0" AnchorPane.topAnchor="8.0">
+                              <Text fx:id="bluesTurn" fill="#007aff" strokeType="OUTSIDE" strokeWidth="0.0" text="Blue's Turn" AnchorPane.leftAnchor="312.0" AnchorPane.topAnchor="8.0">
                                  <font>
                                     <Font name="Segoe UI Semibold" size="35.0" />
                                  </font>
@@ -388,6 +390,61 @@
                   <Font size="18.0" />
                </font>
             </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="tutorialPane" disable="true" opacity="0.0" prefHeight="1000.0" prefWidth="800.0">
+         <children>
+            <AnchorPane fx:id="page1" prefHeight="1000.0" prefWidth="800.0">
+               <children>
+                  <ImageView fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@GIFs/page1.gif" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="page2" prefHeight="1000.0" prefWidth="800.0">
+               <children>
+                  <ImageView fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@GIFs/page2.gif" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="page3" prefHeight="1000.0" prefWidth="800.0">
+               <children>
+                  <ImageView fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@GIFs/page3.gif" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="page4" prefHeight="1000.0" prefWidth="800.0">
+               <children>
+                  <ImageView fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@GIFs/page4.gif" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="page5" prefHeight="1000.0" prefWidth="800.0">
+               <children>
+                  <ImageView fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@GIFs/page5.gif" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Pagination fx:id="tutorial" maxPageIndicatorCount="5" pageCount="5" prefHeight="542.0" prefWidth="800.0" AnchorPane.bottomAnchor="75.0" AnchorPane.topAnchor="0.0" />
+             <Button styleClass="hideTutorial" text="x" mnemonicParsing="false" onAction="#showInstructions" prefHeight="45.0" prefWidth="45.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                 <graphic>
+                     <SVGPath content="M 0 0 L 15 15 M 15 0 L 0 15" stroke="#f1f1f1" strokeLineCap="ROUND" strokeWidth="6.0" />
+                 </graphic>/>
+             </Button>
          </children>
       </AnchorPane>
    </children>

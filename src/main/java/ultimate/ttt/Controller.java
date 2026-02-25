@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -18,7 +19,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.shape.Rectangle;
 
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -26,7 +26,10 @@ import java.util.Random;
 public class Controller {
 
     @FXML
-    private AnchorPane root, menu;
+    private AnchorPane root, menu, tutorialPane, page1, page2, page3, page4, page5;
+
+    @FXML
+    private Pagination tutorial;
 
     @FXML
     private GridPane masterGrid;
@@ -44,7 +47,7 @@ public class Controller {
     private ToggleButton soundToggle, blueScoreDisplay, redScoreDisplay;
 
     @FXML
-    private Text bluesturn, redsturn, drawtext;
+    private Text bluesTurn, redsTurn, drawtext;
 
     private Player startingPlayer;
 
@@ -94,12 +97,31 @@ public class Controller {
         menuImage.setClip(clip);
     }
 
+    private void initializePagination() {
+
+        Node[] pages = {page1, page2, page3, page4, page5};
+
+        tutorial.setPageFactory(pageIndex -> {
+            return pages[pageIndex];
+        });
+
+        Rectangle clip = new Rectangle();
+
+        clip.setArcWidth(30);
+        clip.setArcHeight(30);
+
+        clip.widthProperty().bind(root.widthProperty());
+        clip.heightProperty().bind(root.heightProperty());
+
+        tutorialPane.setClip(clip);
+    }
+
     private void initializeIconsAndText() {
         restartIcon.setOpacity(0.0);
         restartIcon.setDisable(true);
 
-        bluesturn.setVisible(true);
-        redsturn.setVisible(false);
+        bluesTurn.setVisible(true);
+        redsTurn.setVisible(false);
         drawtext.setVisible(false);
     }
 
@@ -147,6 +169,7 @@ public class Controller {
         this.initializeSounds();
         this.initializeMute();
         this.initializeMainMenu();
+        this.initializePagination();
         this.initializeIconsAndText();
         this.initializeGrid();
 
@@ -228,18 +251,18 @@ public class Controller {
     private void crown(Player winner) {
         gameBoard.disableAllBoards();
 
-        bluesturn.setVisible(false);
-        redsturn.setVisible(false);
+        bluesTurn.setVisible(false);
+        redsTurn.setVisible(false);
 
         String style;
         if (winner == Player.BLUE) {
             style = "-fx-background-color: #007aff";
-            bluesturn.setText("Blue wins!");
-            bluesturn.setVisible(true);
+            bluesTurn.setText("Blue wins!");
+            bluesTurn.setVisible(true);
         } else {
             style = "-fx-background-color: #fc3c2f";
-            redsturn.setText("Red wins!");
-            redsturn.setVisible(true);
+            redsTurn.setText("Red wins!");
+            redsTurn.setVisible(true);
         }
 
         globalWinSound.play();
@@ -252,8 +275,8 @@ public class Controller {
      */
     private void draw() {
 
-        bluesturn.setVisible(false);
-        redsturn.setVisible(false);
+        bluesTurn.setVisible(false);
+        redsTurn.setVisible(false);
         drawtext.setVisible(true);
 
         globalDrawSound.play();
@@ -325,16 +348,16 @@ public class Controller {
         if(restartIcon.getOpacity()>0.5) {
 
             this.drawtext.setVisible(false);
-            this.redsturn.setVisible(false);
-            this.bluesturn.setVisible(false);
-            this.redsturn.setText("Red's turn!");
-            this.bluesturn.setText("Blue's turn!");
+            this.redsTurn.setVisible(false);
+            this.bluesTurn.setVisible(false);
+            this.redsTurn.setText("Red's turn!");
+            this.bluesTurn.setText("Blue's turn!");
             if(startingPlayer== Player.BLUE) {
                 startingPlayer = Player.RED;
-                redsturn.setVisible(true);
+                redsTurn.setVisible(true);
             } else {
                 startingPlayer = Player.BLUE;
-                bluesturn.setVisible(true);
+                bluesTurn.setVisible(true);
             }
 
             this.gameBoard = new UltimateBoard(allButtons, startingPlayer, localWinSound);
@@ -370,8 +393,12 @@ public class Controller {
         fade.play();
     }
 
+    protected void handleEsc() {
+        if(!tutorialPane.isDisabled()) showInstructions();
+        else hideMenu();
+    }
     @FXML
-    protected void hideMenu() {
+    private void hideMenu() {
         if(menu.isDisabled()) {
             this.opacityTransition(menu, 200, true);
             playButton.setText("Continue");
@@ -386,7 +413,11 @@ public class Controller {
 
     @FXML
     private void showInstructions() {
-
+        if(tutorialPane.isDisabled()) {
+            this.opacityTransition(tutorialPane, 200, true);
+        } else {
+            this.opacityTransition(tutorialPane, 350, false);
+        }
     }
 
     @FXML
@@ -408,8 +439,8 @@ public class Controller {
      * Swaps "x's turn" text for "y's turn" text and calls {@link UltimateBoard#switchPlayers()}
      */
     private void switchPlayers() {
-        bluesturn.setVisible(!bluesturn.isVisible());
-        redsturn.setVisible(!redsturn.isVisible());
+        bluesTurn.setVisible(!bluesTurn.isVisible());
+        redsTurn.setVisible(!redsTurn.isVisible());
         gameBoard.switchPlayers();
     }
 }

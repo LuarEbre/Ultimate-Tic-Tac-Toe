@@ -137,3 +137,75 @@
     -fx-border-insets: -2;
     -fx-border-width: 2;
 }
+
+.hideTutorial {
+    -fx-background-color: #fc3c2f;
+    -fx-background-radius: 0 0 0 15;
+
+    -fx-border-color: #d60014;
+    -fx-border-radius: 0 0 0 17;
+    -fx-border-insets: -2;
+    -fx-border-width: 0 0 4 4;
+
+    -fx-alignment: center;
+    -fx-padding: 0 0 2 8;
+}
+
+.hideTutorial:hover {
+    -fx-background-color: #ff5c52;
+}
+
+#tutorial .pagination-control {
+    -fx-translate-y: -60;
+    -fx-background-color: transparent;
+}
+
+.pagination .number-button {
+    -fx-background-color: #77777A;
+    -fx-text-fill: #0d0d0d;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.pagination .number-button:hover {
+    -fx-background-color: #bcbcc0;
+}
+
+.pagination .number-button:selected {
+    -fx-background-color: #007aff;
+    -fx-text-fill: #f1f1f1;
+}
+
+.pagination .number-button:selected:hover{
+    -fx-background-color: #005edd;
+}
+
+.pagination .page-information {
+    -fx-text-fill: transparent;
+}
+
+.pagination .left-arrow,
+.pagination .right-arrow {
+    -fx-background-color: #0d0d0d;
+    -fx-scale-x: 2;
+    -fx-scale-y: 2;
+}
+
+.pagination .left-arrow-button,
+.pagination .right-arrow-button {
+    -fx-background-color: transparent;
+}
+
+.pagination .left-arrow-button:hover,
+.pagination .right-arrow-button:hover {
+    -fx-cursor: hand;
+}
+
+.pagination .left-arrow-button:hover .left-arrow,
+.pagination .right-arrow-button:hover .right-arrow {
+    -fx-scale-x: 2.5;
+    -fx-scale-y: 2.5;
+}
