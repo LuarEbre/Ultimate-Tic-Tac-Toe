@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -37,7 +38,7 @@ public class Controller {
     private GridPane masterGrid;
 
     @FXML
-    private ImageView restartIcon, menuImage;
+    private ImageView restartIcon, menuImage, gif1, gif2, gif3, gif4, gif5;
 
     @FXML
     private Button[][][][] allButtons;
@@ -100,6 +101,21 @@ public class Controller {
     }
 
     private void initializePagination() {
+        ImageView[] views = {gif1, gif2, gif3, gif4, gif5};
+        String[] gifPaths = {
+                "/GUI/GIFs/page1.gif", "/GUI/GIFs/page2.gif", "/GUI/GIFs/page3.gif",
+                "/GUI/GIFs/page4.gif", "/GUI/GIFs/page5.gif"
+        };
+
+        for (int i = 0; i < views.length; i++) {
+
+            String url = getClass().getResource(gifPaths[i]).toExternalForm();
+
+            // load GIFs in background thread
+            Image gif = new Image(url, 800, 1000, true, true, true);
+
+            views[i].setImage(gif);
+        }
 
         Node[] pages = {page1, page2, page3, page4, page5};
 
@@ -173,7 +189,6 @@ public class Controller {
     }
     @FXML
     public void initialize() {
-
         this.startingPlayer = Player.BLUE;
 
         this.random = new Random();
@@ -285,7 +300,6 @@ public class Controller {
      * Displays a text saying "Draw!" and paints all buttons in grey using {@link #animateBoardFill(String)}
      */
     private void draw() {
-
         bluesTurn.setVisible(false);
         redsTurn.setVisible(false);
         drawtext.setVisible(true);
@@ -379,6 +393,7 @@ public class Controller {
                     .flatMap(Arrays::stream)
                     .toList();
             for (Button button : buttons) {
+                // reset style for all 81 buttons and enable them to enable first move
                 button.setStyle("");
                 button.setDisable(false);
             }
@@ -408,6 +423,7 @@ public class Controller {
         if(!tutorialPane.isDisabled()) showInstructions();
         else hideMenu();
     }
+
     @FXML
     private void hideMenu() {
         if(menu.isDisabled()) {

@@ -396,46 +396,31 @@
          <children>
             <AnchorPane fx:id="page1" prefHeight="1000.0" prefWidth="800.0">
                <children>
-                  <ImageView fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@GIFs/page1.gif" />
-                     </image>
+                  <ImageView fx:id="gif1" fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
                   </ImageView>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="page2" prefHeight="1000.0" prefWidth="800.0">
                <children>
-                  <ImageView fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@GIFs/page2.gif" />
-                     </image>
+                  <ImageView fx:id="gif2" fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
                   </ImageView>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="page3" prefHeight="1000.0" prefWidth="800.0">
                <children>
-                  <ImageView fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@GIFs/page3.gif" />
-                     </image>
+                  <ImageView fx:id="gif3" fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
                   </ImageView>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="page4" prefHeight="1000.0" prefWidth="800.0">
                <children>
-                  <ImageView fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@GIFs/page4.gif" />
-                     </image>
+                  <ImageView fx:id="gif4" fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
                   </ImageView>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="page5" prefHeight="1000.0" prefWidth="800.0">
                <children>
-                  <ImageView fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@GIFs/page5.gif" />
-                     </image>
+                  <ImageView fx:id="gif5" fitHeight="1000.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
                   </ImageView>
                </children>
             </AnchorPane>
