@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.shape.Rectangle;
 
+import java.time.LocalDate;
+import java.time.Year;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -47,7 +49,7 @@ public class Controller {
     private ToggleButton soundToggle, blueScoreDisplay, redScoreDisplay;
 
     @FXML
-    private Text bluesTurn, redsTurn, drawtext;
+    private Text bluesTurn, redsTurn, drawtext, copyrightText;
 
     private Player startingPlayer;
 
@@ -123,6 +125,15 @@ public class Controller {
         bluesTurn.setVisible(true);
         redsTurn.setVisible(false);
         drawtext.setVisible(false);
+
+        int startYear = 2026;
+        int currentYear = Year.now().getValue();
+
+        if (currentYear > startYear) {
+            copyrightText.setText("© " + startYear + " - " + currentYear + " Raul Erbe");
+        } else {
+            copyrightText.setText("© " + startYear + " Raul Erbe");
+        }
     }
 
     private void initializeGrid() {
@@ -414,6 +425,7 @@ public class Controller {
     @FXML
     private void showInstructions() {
         if(tutorialPane.isDisabled()) {
+            this.tutorial.setCurrentPageIndex(0);
             this.opacityTransition(tutorialPane, 200, true);
         } else {
             this.opacityTransition(tutorialPane, 350, false);
